@@ -1,6 +1,6 @@
   <!-- Footer -->
-  <footer class="page-footer font-small bg-secondary">
-    <div class="footer-copyright text-center py-3">
+  <footer class="footer page-footer font-small bg-secondary">
+    <div class="footer-copyright text-center text-white py-1">
       {{ __('Development by Raingrave') }}
     </div>
   </footer>

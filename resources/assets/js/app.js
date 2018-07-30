@@ -8,3 +8,5 @@
 require('./bootstrap')
 require('./auth.js')
 require('./message.js')
+require('./masks.js')
+require('./product.js')

@@ -2,12 +2,10 @@ body {
     background-color: #DDD;
 }
 
-footer {
-    position: absolute;
+.footer {
+    position: fixed;
     bottom: 0;
     width: 100%;
-    line-height: 20px;
-    background-color: #f5f5f5;
 }
 
 .width-100 {
@@ -54,4 +52,26 @@ footer {
     border-bottom: 2px solid #69757c !important;
     border-top: none;
     padding: 0.50rem 0 0 6px;
+}
+
+.pagination  li > a {
+    color: #ddd !important;
+    background-color: #69757C;
+}
+
+.page-item.active .page-link {
+    color: #ddd !important;
+    background-color: #333 !important;
+    border-color: transparent !important;
+}
+
+.page-item .page-link:hover {
+    background-color: #333 !important;
+    border-color: transparent !important;
+}
+
+.page-item.disabled .page-link {
+    color: #ddd;
+    background-color: #69757C !important;
+    opacity: .5;
 }

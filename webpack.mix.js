@@ -12,10 +12,14 @@ let mix = require('laravel-mix');
  */
 
 mix
-  .copy('/var/www/html/contactamax/node_modules/bootstrap', 'resources/assets/libs/bootstrap')
+  .copy('node_modules/bootstrap', 'resources/assets/libs/bootstrap')
+  .copy('node_modules/jquery-mask-plugin', 'resources/assets/libs/jquery-mask-plugin')
   .styles([
       'resources/assets/libs/bootstrap/dist/css/bootstrap.css',
       'resources/assets/css/style.css'
   ], 'public/css/app.css')
-  mix.js('resources/assets/js/app.js', 'public/js')
+  mix.js([
+      'resources/assets/js/app.js',
+      'resources/assets/libs/jquery-mask-plugin/dist/jquery.mask.js'
+  ], 'public/js/app.js')
 
