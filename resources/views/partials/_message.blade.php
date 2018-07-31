@@ -1,5 +1,5 @@
 @if (session()->has('success'))
-  <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+  <div class="alert alert-success alert-dismissible fade show mt-3 auto-hide" role="alert">
     <strong>
       <i class="fas fa-check"></i>
     </strong>
@@ -11,7 +11,7 @@
 @endif
 
 @if (session()->has('danger'))
-  <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+  <div class="alert alert-danger alert-dismissible fade show mt-3 auto-hide" role="alert">
     <strong>
       <i class="fas fa-exclamation-circle"></i>
     </strong>

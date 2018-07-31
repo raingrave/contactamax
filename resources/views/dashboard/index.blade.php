@@ -8,7 +8,7 @@
         @include('partials._card', ['title' => 'Gerenciar produtos', 'icon' => 'plus', 'route' => 'dashboard.product.index'])
       </div>
       <div class="col-12 col-md-3 mb-4">
-        @include('partials._card', ['title' => 'Entrada de produtos', 'icon' => 'cart-plus', 'route' => 'dashboard.product.index'])
+        @include('partials._card', ['title' => 'Entrada de produtos', 'icon' => 'cart-plus', 'route' => 'dashboard.input.order.index'])
       </div>
       <div class="col-12 col-md-3 mb-4">
         @include('partials._card', ['title' => 'Saída de produtos', 'icon' => 'cart-arrow-down', 'route' => 'dashboard.product.index'])

@@ -13,13 +13,13 @@ let mix = require('laravel-mix');
 
 mix
   .copy('node_modules/bootstrap', 'resources/assets/libs/bootstrap')
-  .copy('node_modules/jquery-mask-plugin', 'resources/assets/libs/jquery-mask-plugin')
   .styles([
       'resources/assets/libs/bootstrap/dist/css/bootstrap.css',
       'resources/assets/css/style.css'
   ], 'public/css/app.css')
   mix.js([
       'resources/assets/js/app.js',
-      'resources/assets/libs/jquery-mask-plugin/dist/jquery.mask.js'
+      'node_modules/jquery-mask-plugin',
+      'node_modules/block-ui/jquery.blockUI.js'
   ], 'public/js/app.js')
 

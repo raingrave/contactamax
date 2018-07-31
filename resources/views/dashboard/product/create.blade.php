@@ -5,7 +5,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-12 col-md-12">
-        <h4>{{ __('Cadastro de produtos') }}</h4>
+        <h4>{{ __('Novo produto') }}</h4>
         <hr>
         @include('partials._message')
         <div class="text-right">

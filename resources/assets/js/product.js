@@ -1,7 +1,7 @@
 const Product = {
     btShow: $('.bt-show'),
-    btDelete: $('.bt-delete'),
-    formDelete: $('#form-delete'),
+    btDelete: $('.bt-product-delete'),
+    formDelete: $('#form-product-delete'),
 
     show () {
         this.btShow.on('click', (event) => {

@@ -13,8 +13,8 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'Contactamax\Events\Event' => [
-            'Contactamax\Listeners\EventListener',
+        'Contactamax\Events\SaveOrdem' => [
+            'Contactamax\Listeners\NotifyIfLower',
         ],
     ];
 

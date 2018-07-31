@@ -75,3 +75,8 @@ body {
     background-color: #69757C !important;
     opacity: .5;
 }
+
+.input-hidden {
+    background-color: transparent;
+    border: none !important;
+}

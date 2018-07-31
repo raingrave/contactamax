@@ -29,7 +29,21 @@ Route::group([
         'namespace' => 'Product',
     ], function () {
         Route::get('listagem', 'ProductController@index')->name('dashboard.product.index');
+        Route::get('find/{attribute}', 'ProductController@getByAttribute');
         Route::get('novo', 'ProductController@create')->name('dashboard.product.create');
         Route::post('novo', 'ProductController@store')->name('dashboard.product.store');
+        Route::get('editar/{id}', 'ProductController@edit')->name('dashboard.product.edit');
+        Route::post('editar/{id}', 'ProductController@update')->name('dashboard.product.update');
+        Route::post('excluir/{id}', 'ProductController@destroy')->name('dashboard.product.destroy');
+    });
+
+    Route::group([
+        'prefix' => 'ordem',
+        'namespace' => 'Order',
+    ], function () {
+        Route::get('listagem', 'InputOrderController@index')->name('dashboard.input.order.index');
+        Route::get('novo', 'InputOrderController@create')->name('dashboard.input.order.create');
+        Route::post('novo', 'InputOrderController@store')->name('dashboard.input.order.store');
+        Route::post('excluir/{id}', 'InputOrderController@destroy')->name('dashboard.input.order.destroy');
     });
 });

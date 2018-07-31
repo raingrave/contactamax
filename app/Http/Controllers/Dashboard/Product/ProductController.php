@@ -2,15 +2,17 @@
 
 namespace Contactamax\Http\Controllers\Dashboard\Product;
 
-use Contactamax\Entities\Product;
+use Contactamax\Entities\Category;
 use Contactamax\Http\Controllers\Controller;
+use Contactamax\Http\Requests\ProductFormRequest;
+use Contactamax\Services\Contracts\ProductServiceContract;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
     protected $productService;
 
-    public function __construct(Product $productService)
+    public function __construct(ProductServiceContract $productService)
     {
         $this->productService = $productService;
     }
@@ -22,9 +24,14 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = $this->productService->with('category')->get();
+        $products = $this->productService->getByFilter(10);
 
         return view('dashboard.product.index', compact('products'));
+    }
+    
+    public function getByAttribute($attribute)
+    {
+        return $this->productService->getByAttribute($attribute);
     }
 
     /**
@@ -34,7 +41,11 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('dashboard.product.create');
+        $categories = Category::where('status', true)
+            ->orderBy('name')
+            ->get();
+
+        return view('dashboard.product.create', compact('categories'));
     }
 
     /**
@@ -43,10 +54,9 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductFormRequest $request)
     {
-        dd($request->all());
-        
+        return $this->productService->create($request->all());
     }
 
     /**
@@ -55,7 +65,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(int $id)
     {
         //
     }
@@ -66,9 +76,15 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(int $id)
     {
-        //
+        $categories = Category::where('status', true)
+            ->orderBy('name')
+            ->get();
+
+        $product = $this->productService->read($id);
+
+        return view('dashboard.product.edit', compact('product', 'categories'));
     }
 
     /**
@@ -78,9 +94,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, int $id)
     {
-        //
+        return $this->productService->update($request->all(), $id);
     }
 
     /**
@@ -89,8 +105,8 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(int $id)
     {
-        //
+        return $this->productService->delete($id);
     }
 }

@@ -5,7 +5,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-12 col-md-12">
-        <h4>{{ __('Listagem de produtos') }}</h4>
+        <h4>{{ __('Produtos') }}</h4>
         <hr>
         @include('partials._message')
         <div class="row mt-1">
@@ -52,8 +52,8 @@
                   <td>{{ $product->category->name }}</td>
                   <td>{{ $product->name }}</td>
                   <td>{{ $product->description }}</td>
-                  <td>{{ $product->quantity }}</td>
-                  <td>{{ number_format($product->price, 2, ',', '.') }}</td>
+                  <td>{{ $product->items->where('input_order_id', '!=', null)->sum('quantity') - $product->items->where('input_order_id', null)->sum('quantity') }}</td>
+                  <td>{{ $product->price }}</td>
                   <td>{!! $product->status ? '<span class="badge badge-success">Ativo</span>' : '<span class="badge badge-danger">Inativo</span>'  !!}</td>
                   <td>{{ $product->created_at->format('d/m/Y') }}</td>
                   <td>{{ $product->updated_at->format('d/m/Y') }}</td>
@@ -64,14 +64,14 @@
                     <a href="{{ route('dashboard.product.edit', $product->id) }}">
                       <i class="fas fa-edit text-black-50"></i>
                     </a>
-                    <a href="#" class="bt-delete">
+                    <a href="#" class="bt-product-delete">
                       <i class="far fa-trash-alt text-danger"></i>
                     </a>
-                    <form id="form-delete" action="{{ route('dashboard.product.destroy', $product->id) }}" method="post">
+                    <form id="form-product-delete" action="{{ route('dashboard.product.destroy', $product->id) }}" method="post">
                       @csrf
                     </form>
                   </td>
-                  @include('partials._modalshow')
+                  @include('dashboard.product._modalshow')
                 </tr>
                 @endforeach
               </tbody>
